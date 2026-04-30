@@ -11,7 +11,7 @@ const TopTiles = async () => {
     return (
         <div className="w-full">
             <div>
-                <h1 className="text-5xl my-5 font-bold text-[#155DFC]">
+                <h1 className="text-[30px] my-5 font-bold text-[#155DFC]">
                     Feature Tiles
                 </h1>
             </div>
