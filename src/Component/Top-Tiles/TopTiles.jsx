@@ -1,4 +1,4 @@
-import TileCarts from "../Tile carts/TileCarts";
+import TileCarts from "@/Component/Tile carts/TileCarts";
 
 const TopTiles = async () => {
     const res = await fetch('https://tile-gallery-azure.vercel.app/timeData.json', {
