@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@better-auth/mongo-adapter": "^1.6.9",
+    "@heroui/react": "^3.0.3",
     "better-auth": "^1.6.9",
     "lucide-react": "^1.14.0",
     "mongodb": "^7.2.0",
