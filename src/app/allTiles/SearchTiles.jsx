@@ -1,5 +1,5 @@
 "use client";
-
+import { FaSearchengin } from "react-icons/fa6";
 import { useState, useMemo } from "react";
 import TileCarts from "@/Component/Tile carts/TileCarts";
 
@@ -38,7 +38,7 @@ const SearchTiles = ({ allTiles }) => {
             focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           />
           <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-            🔍
+            <FaSearchengin />
           </span>
         </div>
       </div>

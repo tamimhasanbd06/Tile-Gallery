@@ -9,7 +9,7 @@ const TopTiles = async () => {
     const topTiles = tiles.slice(0, 4);
 
     return (
-        <div className="w-full">
+        <div className="w-full max-w-7xl mx-auto">
             <div>
                 <h1 className="text-[30px] my-5 font-bold text-[#155DFC]">
                     Feature Tiles
