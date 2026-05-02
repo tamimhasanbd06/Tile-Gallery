@@ -1,4 +1,3 @@
-// ========================= SIGN UP PAGE =========================
 "use client";
 
 import React from "react";
@@ -38,6 +37,12 @@ export default function SignUpPage() {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-2 sm:px-4 md:px-6 py-4">
       <Card
@@ -54,6 +59,7 @@ export default function SignUpPage() {
 
         {/* Google Button */}
         <Button
+          onClick={handleGoogleSignIn}
           type="button"
           className="w-full h-10 xs:h-11 sm:h-12 mt-6 sm:mt-8 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold rounded-xl flex items-center justify-center gap-2 sm:gap-3 shadow-sm transition-all duration-300 text-sm sm:text-base"
         >
