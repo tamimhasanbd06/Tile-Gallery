@@ -36,7 +36,8 @@ const TilesDetails = async ({ params, searchParams }) => {
 
   if (!tile) return notFound();
 
-  // ✅ SMART BACK ROUTE DETECT
+
+
   const backUrl = searchParams?.from === "home" ? "/" : "/allTiles";
 
   const {
@@ -75,7 +76,7 @@ const TilesDetails = async ({ params, searchParams }) => {
 
           {/* IMAGE SECTION (FULL RESPONSIVE SAFE) */}
           <div className="lg:w-1/2 w-full flex items-center justify-center bg-white rounded-2xl overflow-hidden p-4">
-            <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px]">
+            <div className="relative w-full h-62.5 sm:h-87.5 md:h-112.5 lg:h-[550px]">
               <Image
                 src={image}
                 alt={title}
