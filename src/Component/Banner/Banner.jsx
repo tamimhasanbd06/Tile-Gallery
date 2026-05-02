@@ -5,13 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectCreative } from "swiper/modules";
-
-// Swiper Styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-creative";
-
-// Images
 import bannerImg1 from "../../../public/Image/banner1.png";
 import bannerImg2 from "../../../public/Image/banner2.png";
 
@@ -56,22 +52,24 @@ const Banner = () => {
           disableOnInteraction: false,
         }}
         pagination={{ clickable: true }}
-        className="w-full h-full"
-      >
+        className="w-full h-full">
         {bannerSlides.map((slide, index) => (
           <SwiperSlide key={slide.id}>
             <div className="relative w-full h-screen">
-              {/* Background Image */}
+              
+
+
+
               <Image
                 src={slide.image}
                 alt={slide.title}
                 fill
-                priority={index === 0}     // only first slide LCP optimized
+                priority={index === 0}    
                 loading={index === 0 ? "eager" : "lazy"}
-                className="object-cover object-center"
-              />
+                className="object-cover object-center"/>
 
-              {/* Overlay */}
+
+
               <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] z-10"></div>
 
               {/* Content */}

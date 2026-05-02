@@ -8,7 +8,7 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
 
-        {/* BRAND */}
+        
         <div>
           <h2 className="text-2xl font-extrabold text-blue-600 mb-3">
             Tiles Gallery
@@ -19,7 +19,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* PAGES */}
+        
         <div>
           <h3 className="text-lg font-bold text-blue-600 mb-4">
             Pages
@@ -48,7 +48,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* CONTACT */}
+        
         <div>
           <h3 className="text-lg font-bold text-blue-600 mb-4">
             Contact
@@ -81,7 +81,7 @@ const Footer = () => {
 
       </div>
 
-      {/* BOTTOM */}
+      
       <div className="border-t border-base-300 text-center py-4 text-sm">
         <span className="text-blue-600 font-semibold">
           © {new Date().getFullYear()} Tiles Gallery
