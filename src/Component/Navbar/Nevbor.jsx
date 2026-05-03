@@ -28,7 +28,7 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", path: "/", icon: Home },
     { name: "All Tiles", path: "/allTiles", icon: ImageIcon },
-    { name: "Profile", path: "/my-profile", icon: User },
+    { name: "Profile", path: "/myprofile", icon: User },
   ];
 
   const handleLogout = async () => {
