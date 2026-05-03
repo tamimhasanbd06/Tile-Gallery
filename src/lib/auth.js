@@ -13,8 +13,8 @@ export const auth = betterAuth({
   },
 socialProviders: {
   google: {
-    clientId: process.env.GOOGLE_CLTENT_ID,
-    clientSecret: process.env.GOOGLE_CLTENT_SECRE,
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   }
 }
 

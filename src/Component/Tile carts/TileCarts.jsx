@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link"; 
+import { TbDimensions } from "react-icons/tb";
 
 const TileCarts = ({ tiles, index }) => {
   const {
@@ -51,7 +52,10 @@ const TileCarts = ({ tiles, index }) => {
           </span>
         </div>
 
-        <p className="text-sm text-gray-500">📏 {dimensions}</p>
+        <div className="flex gap-1">
+          <TbDimensions />
+          <p className="text-sm text-gray-500"> {dimensions}</p>
+        </div>
         <p className="text-lg font-bold text-blue-600 mt-1">{currency} {price}</p>
 
         

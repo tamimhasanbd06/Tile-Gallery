@@ -1,162 +1,157 @@
 "use client";
 
-import React from "react";
-import { Button, Card, Form, Input, Label, TextField } from "@heroui/react";
-import {
-  FaEnvelope,
-  FaLock,
-  FaUser,
-  FaLink,
-  FaArrowRight,
-} from "react-icons/fa6";
-import { FcGoogle } from "react-icons/fc";
-import Link from "next/link";
+import React, { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
+import { FaEnvelope, FaLock, FaUser } from "react-icons/fa6";
 
-export default function SignUpPage() {
+export default function Page() {
   const router = useRouter();
 
-  const onSubmit = async (e) => {
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setErrorMsg("");
 
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const imageUrl = e.target.imageUrl.value;
+    const name = e.target.name.value.trim();
+    const email = e.target.email.value.trim();
+    const password = e.target.password.value.trim();
 
-    const { data, error } = await authClient.signUp.email({
-      name,
-      email,
-      password,
-      image: imageUrl,
-    });
+    console.log("Signup Data:", { name, email, password });
 
-    if (data && !error) {
-      router.push("/");
+    try {
+      const { data, error } = await authClient.signUp.email({
+        name,
+        email,
+        password,
+      });
+
+      console.log("Response:", { data, error });
+
+      if (error) {
+        setErrorMsg(error.message || "Signup failed");
+        return;
+      }
+
+      if (data) {
+        router.push("/");
+      }
+    } catch (err) {
+      console.error("Signup Catch Error:", err);
+      setErrorMsg(err?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-    });
+  const handleGoogle = async () => {
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+      });
+    } catch (err) {
+      console.error(err);
+      setErrorMsg("Google login failed");
+    }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white px-2 sm:px-4 md:px-6 py-4">
-      <Card
-        className="w-full max-w-md p-4 xs:p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-200"
-        style={{ backgroundColor: "#F4F0F8" }}
-      >
-        <h1 className="text-2xl xs:text-3xl font-extrabold text-gray-900 text-center">
-          Sign Up
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+
+      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-6">
+
+        {/* TITLE */}
+        <h1 className="text-3xl font-bold text-center text-gray-900">
+          Create Account
         </h1>
 
-        <p className="text-gray-500 text-xs xs:text-sm text-center mt-2">
-          Create your account to continue
+        <p className="text-center text-gray-500 text-sm mt-2">
+          Sign up to get started
         </p>
 
-        {/* Google Button */}
-        <Button
-          onClick={handleGoogleSignIn}
-          type="button"
-          className="w-full h-10 xs:h-11 sm:h-12 mt-6 sm:mt-8 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold rounded-xl flex items-center justify-center gap-2 sm:gap-3 shadow-sm transition-all duration-300 text-sm sm:text-base"
+        {/* GOOGLE LOGIN */}
+        <button
+          onClick={handleGoogle}
+          className="w-full mt-6 flex items-center justify-center gap-2 border py-2 rounded-lg hover:bg-gray-100"
         >
-          <FcGoogle className="text-xl sm:text-2xl" />
-          Sign Up with Google
-        </Button>
+          <FcGoogle size={22} />
+          Continue with Google
+        </button>
 
-        {/* Divider */}
-        <div className="flex items-center gap-2 sm:gap-3 my-4 sm:my-6">
-          <div className="flex-1 h-px bg-gray-300"></div>
-          <span className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider">
-            OR
-          </span>
-          <div className="flex-1 h-px bg-gray-300"></div>
-        </div>
+        {/* ERROR */}
+        {errorMsg && (
+          <p className="text-red-500 text-sm text-center mt-3">
+            {errorMsg}
+          </p>
+        )}
 
-        <Form className="flex flex-col gap-4 sm:gap-5" onSubmit={onSubmit}>
-          {/* Name */}
-          <TextField name="name" isRequired>
-            <Label className="text-[10px] sm:text-xs uppercase tracking-widest text-gray-600">
-              Name
-            </Label>
-            <div className="relative">
-              <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
-              <Input
+        {/* FORM */}
+        <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+
+          {/* NAME */}
+          <div>
+            <label className="text-sm text-gray-600">Name</label>
+            <div className="relative mt-1">
+              <FaUser className="absolute left-3 top-3 text-gray-400" />
+              <input
                 name="name"
                 placeholder="Your name"
-                className="pl-10 h-10 xs:h-11 sm:h-12 w-full bg-white border border-gray-300 text-gray-900 rounded-xl text-sm"
+                className="w-full border p-2 pl-10 rounded-lg"
               />
             </div>
-          </TextField>
+          </div>
 
-          {/* Email */}
-          <TextField name="email" isRequired>
-            <Label className="text-[10px] sm:text-xs uppercase tracking-widest text-gray-600">
-              Email
-            </Label>
-            <div className="relative">
-              <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
-              <Input
+          {/* EMAIL */}
+          <div>
+            <label className="text-sm text-gray-600">Email</label>
+            <div className="relative mt-1">
+              <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
+              <input
                 name="email"
-                placeholder="you@example.com"
-                className="pl-10 h-10 xs:h-11 sm:h-12 w-full bg-white border border-gray-300 text-gray-900 rounded-xl text-sm"
+                placeholder="you@gmail.com"
+                className="w-full border p-2 pl-10 rounded-lg"
               />
             </div>
-          </TextField>
+          </div>
 
-          {/* Password */}
-          <TextField name="password" isRequired>
-            <Label className="text-[10px] sm:text-xs uppercase tracking-widest text-gray-600">
-              Password
-            </Label>
-            <div className="relative">
-              <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
-              <Input
-                name="password"
+          {/* PASSWORD */}
+          <div>
+            <label className="text-sm text-gray-600">Password</label>
+            <div className="relative mt-1">
+              <FaLock className="absolute left-3 top-3 text-gray-400" />
+              <input
                 type="password"
+                name="password"
                 placeholder="••••••••"
-                className="pl-10 h-10 xs:h-11 sm:h-12 w-full bg-white border border-gray-300 text-gray-900 rounded-xl text-sm"
+                className="w-full border p-2 pl-10 rounded-lg"
               />
             </div>
-          </TextField>
+          </div>
 
-          {/* Image URL */}
-          <TextField name="imageUrl" isRequired>
-            <Label className="text-[10px] sm:text-xs uppercase tracking-widest text-gray-600">
-              Image URL
-            </Label>
-            <div className="relative">
-              <FaLink className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
-              <Input
-                name="imageUrl"
-                placeholder="https://image.com/photo.jpg"
-                className="pl-10 h-10 xs:h-11 sm:h-12 w-full bg-white border border-gray-300 text-gray-900 rounded-xl text-sm"
-              />
-            </div>
-          </TextField>
-
-          {/* Submit */}
-          <Button
+          {/* BUTTON */}
+          <button
             type="submit"
-            className="w-full h-10 xs:h-11 sm:h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 mt-2 transition-all duration-300 text-sm sm:text-base"
+            disabled={loading}
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
           >
-            Create Account <FaArrowRight className="text-sm" />
-          </Button>
-        </Form>
+            {loading ? "Creating..." : "Create Account"}
+          </button>
+        </form>
 
-        <p className="text-center text-gray-500 text-[11px] sm:text-xs mt-4 sm:mt-6">
+        {/* LOGIN LINK */}
+        <p className="text-center text-sm text-gray-500 mt-5">
           Already have an account?{" "}
-          <Link
-            href="/login"
-            className="text-blue-600 font-semibold hover:underline"
-          >
+          <Link href="/login" className="text-blue-600 font-medium">
             Login
           </Link>
         </p>
-      </Card>
+
+      </div>
     </div>
   );
 }

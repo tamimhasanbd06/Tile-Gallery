@@ -7,134 +7,216 @@ import {
   X,
   LogOut,
   LayoutGrid,
-  ChevronRight,
+  Home,
+  User,
+  LogIn,
+  UserPlus,
+  ImageIcon,
 } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-  const user = null;
+  const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "AllTiles", path: "/allTiles" },
-    { name: "My Profile", path: "/my-profile" },
+    { name: "Home", path: "/", icon: Home },
+    { name: "All Tiles", path: "/allTiles", icon: ImageIcon },
+    { name: "Profile", path: "/my-profile", icon: User },
   ];
 
-  return (
-    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-xl border-b border-blue-100 shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[80px] flex items-center justify-between">
-        
-        {/* LEFT - LOGO */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="p-2 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-            <LayoutGrid />
-          </div>
+  const handleLogout = async () => {
+    await authClient.signOut();
+    window.location.href = "/";
+  };
 
-          <div className="leading-tight">
-            <span className="text-xl font-extrabold text-blue-700">
-              TilesGallery
-            </span>
+  const isActive = (path) =>
+    pathname === path
+      ? "bg-blue-50 text-blue-600"
+      : "text-gray-700 hover:bg-blue-50 hover:text-blue-600";
+
+  const initials = (name) => {
+    if (!name) return "U";
+    const p = name.split(" ");
+    return p.length === 1
+      ? p[0][0].toUpperCase()
+      : `${p[0][0]}${p[1][0]}`.toUpperCase();
+  };
+
+  const Avatar = () => {
+    const img = user?.image || user?.avatar;
+
+    if (img) {
+      return (
+        <div className="relative w-10 h-10 sm:w-11 sm:h-11">
+          <Image
+            src={img}
+            alt="user"
+            fill
+            className="rounded-full object-cover border border-blue-200"
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm">
+        {initials(user?.name)}
+      </div>
+    );
+  };
+
+  return (
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-blue-100">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 h-[70px] flex items-center justify-between">
+
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-2 sm:gap-3">
+          <div className="p-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+            <LayoutGrid size={20} />
           </div>
+          <span className="text-base sm:text-xl font-bold text-blue-700 truncate">
+            TilesGallery
+          </span>
         </Link>
 
-        {/* CENTER - DESKTOP MENU */}
-        <ul className="hidden lg:flex items-center gap-8">
-          {navItems.map((item) => (
-            <li key={item.name}>
-              <Link
-                href={item.path}
-                className="font-medium text-gray-700 hover:text-blue-700 transition duration-300"
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
+        {/* DESKTOP MENU */}
+        <ul className="hidden lg:flex items-center gap-2">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <li key={item.name}>
+                <Link
+                  href={item.path}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-xl text-sm transition ${isActive(
+                    item.path
+                  )}`}
+                >
+                  <Icon size={16} />
+                  {item.name}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
-        {/* RIGHT SIDE */}
-        <div className="flex items-center gap-3">
-          
-          {/* DESKTOP AUTH BUTTONS */}
-          <div className="hidden lg:flex items-center gap-3">
-            {!user ? (
+        {/* RIGHT SECTION */}
+        <div className="flex items-center gap-2 sm:gap-3">
+
+          {/* DESKTOP AUTH */}
+          <div className="hidden lg:flex items-center gap-2">
+            {isPending ? (
+              <p className="text-sm text-gray-500">Loading...</p>
+            ) : !user ? (
               <>
                 <Link
                   href="/login"
-                  className="px-5 py-2 rounded-full border border-blue-600 text-blue-600 hover:bg-blue-50 transition"
+                  className="flex items-center gap-1 px-3 py-2 rounded-full border border-blue-500 text-blue-600 text-sm hover:bg-blue-50"
                 >
-                  Login
+                  <LogIn size={14} /> Login
                 </Link>
 
                 <Link
                   href="/signup"
-                  className="px-5 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition"
+                  className="flex items-center gap-1 px-3 py-2 rounded-full bg-blue-600 text-white text-sm hover:bg-blue-700"
                 >
-                  Sign Up
+                  <UserPlus size={14} /> Sign Up
                 </Link>
               </>
             ) : (
-              <button className="px-5 py-2 rounded-full bg-red-500 text-white hover:bg-red-600 transition">
-                Logout
-              </button>
+              <>
+                <Avatar />
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-1 px-3 py-2 rounded-full bg-red-500 text-white text-sm hover:bg-red-600"
+                >
+                  <LogOut size={14} /> Logout
+                </button>
+              </>
             )}
           </div>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* HAMBURGER */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-blue-50 transition"
+            className="lg:hidden p-2 rounded-xl active:scale-95 bg-blue-50"
           >
-            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* MOBILE FLOATING DROPDOWN */}
-      <div className="relative">
-        <div
-          className={`lg:hidden absolute right-4 top-2 bg-white border border-blue-100 rounded-2xl shadow-2xl transition-all duration-300 origin-top-right ${
-            menuOpen
-              ? "scale-100 opacity-100 visible"
-              : "scale-95 opacity-0 invisible"
-          }`}
-        >
-          <div className="p-5 min-w-[240px] space-y-3">
-            
-            {/* NAV ITEMS */}
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                onClick={() => setMenuOpen(false)}
-                className="block py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition"
-              >
-                {item.name}
-              </Link>
-            ))}
+      {/* MOBILE MENU (BOTTOM SHEET STYLE) */}
+      {menuOpen && (
+        <div className="lg:hidden fixed inset-0 z-50 bg-black/40">
+          <div className="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl p-4 space-y-3">
+
+            {/* USER INFO */}
+            {user && (
+              <div className="flex items-center gap-3 pb-3 border-b">
+                <Avatar />
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold truncate">
+                    {user?.name}
+                  </p>
+                  <p className="text-xs text-gray-500 truncate">
+                    {user?.email}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* NAV */}
+            <div className="grid gap-2">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.path}
+                    onClick={() => setMenuOpen(false)}
+                    className={`flex items-center gap-3 p-3 rounded-xl text-sm ${isActive(
+                      item.path
+                    )}`}
+                  >
+                    <Icon size={18} />
+                    {item.name}
+                  </Link>
+                );
+              })}
+            </div>
 
             {/* AUTH BUTTONS */}
-            <div className="pt-3 border-t flex flex-col gap-3">
+            <div className="pt-3 border-t space-y-2">
+
               {!user ? (
                 <>
                   <Link
                     href="/login"
                     onClick={() => setMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 py-3 border border-blue-600 text-blue-600 rounded-xl hover:bg-blue-50 transition"
+                    className="block text-center py-3 rounded-xl border border-blue-500 text-blue-600"
                   >
-                    Login <ChevronRight size={18} />
+                    Login
                   </Link>
 
                   <Link
                     href="/signup"
                     onClick={() => setMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
+                    className="block text-center py-3 rounded-xl bg-blue-600 text-white"
                   >
-                    Sign Up <ChevronRight size={18} />
+                    Sign Up
                   </Link>
                 </>
               ) : (
-                <button className="w-full py-3 bg-red-500 text-white rounded-xl hover:bg-red-600 transition">
+                <button
+                  onClick={handleLogout}
+                  className="w-full py-3 rounded-xl bg-red-500 text-white"
+                >
                   Logout
                 </button>
               )}
@@ -142,7 +224,7 @@ const Navbar = () => {
 
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };
