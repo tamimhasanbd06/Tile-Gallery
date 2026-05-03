@@ -14,6 +14,10 @@ import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
+// React Toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function SignUpPage() {
   const router = useRouter();
 
@@ -21,10 +25,31 @@ export default function SignUpPage() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const imageUrl = e.target.imageUrl.value;
+    const name = e.target.name.value.trim();
+    const email = e.target.email.value.trim();
+    const password = e.target.password.value.trim();
+    const imageUrl = e.target.imageUrl.value.trim();
+
+    // ================= REQUIRED FIELD VALIDATION =================
+    if (!name) {
+      toast.error("Name is required!");
+      return;
+    }
+
+    if (!email) {
+      toast.error("Email is required!");
+      return;
+    }
+
+    if (!password) {
+      toast.error("Password is required!");
+      return;
+    }
+
+    if (!imageUrl) {
+      toast.error("Image URL is required!");
+      return;
+    }
 
     try {
       const { data, error } = await authClient.signUp.email({
@@ -35,14 +60,17 @@ export default function SignUpPage() {
       });
 
       if (error) {
+        toast.error(error.message || "Signup failed!");
         console.error("Signup Error:", error);
         return;
       }
 
       if (data) {
+        toast.success("Account created successfully!");
         router.push("/");
       }
     } catch (err) {
+      toast.error("Signup failed. Please try again!");
       console.error("Signup Failed:", err);
     }
   };
@@ -55,12 +83,25 @@ export default function SignUpPage() {
         callbackURL: "/",
       });
     } catch (error) {
+      toast.error("Google Sign-In Failed!");
       console.error("Google Sign-In Error:", error);
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-2 sm:px-4 md:px-6 py-4">
+      {/* ================= TOAST CONTAINER ================= */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="light"
+      />
+
       <Card
         className="w-full max-w-md p-4 xs:p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-200"
         style={{ backgroundColor: "#F4F0F8" }}
