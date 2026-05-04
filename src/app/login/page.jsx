@@ -63,9 +63,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-4 py-6">
       <Card
-        className="w-full max-w-md p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-200"
-        style={{ backgroundColor: "#F4F0F8" }}
-      >
+        className="w-full max-w-md p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-200" style={{ backgroundColor: "#F4F0F8" }} >
        
 
         <h1 className="text-3xl font-extrabold text-center text-gray-900">
@@ -81,8 +79,8 @@ export default function LoginPage() {
         <Button
           onClick={handleGoogle}
           type="button"
-          className="w-full mt-6 h-11 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold rounded-xl flex items-center justify-center gap-2 shadow-sm"
-        >
+          className="w-full mt-6 h-11 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold rounded-xl
+            flex items-center justify-center gap-2 shadow-sm" >
           <FcGoogle className="text-xl" />
           Continue with Google
         </Button>
@@ -115,9 +113,7 @@ export default function LoginPage() {
               <Input
                 name="email"
                 type="email"
-                placeholder="you@example.com"
-                className="pl-10 h-11 w-full bg-white border border-gray-300 rounded-xl text-sm"
-              />
+                 placeholder="you@example.com" className="pl-10 h-11 w-full bg-white border border-gray-300 rounded-xl text-sm" />
             </div>
           </TextField>
 
@@ -132,8 +128,7 @@ export default function LoginPage() {
                 name="password"
                 type="password"
                 placeholder="••••••••"
-                className="pl-10 h-11 w-full bg-white border border-gray-300 rounded-xl text-sm"
-              />
+                className="pl-10 h-11 w-full bg-white border border-gray-300 rounded-xl text-sm"/>
             </div>
           </TextField>
 
@@ -141,8 +136,8 @@ export default function LoginPage() {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl flex items-center justify-center gap-2"
-          >
+            className="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl flex items-center
+             justify-center gap-2">
             {loading ? "Logging in..." : "Login"}
             <FaArrowRight />
           </Button>

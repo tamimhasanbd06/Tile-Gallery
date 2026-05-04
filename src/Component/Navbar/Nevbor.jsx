@@ -2,17 +2,7 @@
 
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
-import {
-  Menu,
-  X,
-  LogOut,
-  LayoutGrid,
-  Home,
-  User,
-  LogIn,
-  UserPlus,
-  ImageIcon,
-} from "lucide-react";
+import { Menu, X, LogOut, LayoutGrid, Home, User, LogIn, UserPlus, ImageIcon, } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -54,7 +44,7 @@ const Navbar = () => {
 
     if (img) {
       return (
-        <div className="relative w-10 h-10 min-w-[40px] min-h-[40px]">
+        <div className="relative w-10 h-10 min-w-10 min-h-10">
           <Image
             src={img}
             alt="user"
@@ -66,7 +56,8 @@ const Navbar = () => {
     }
 
     return (
-      <div className="w-10 h-10 min-w-[40px] flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm">
+      <div className="w-10 h-10 min-w-10 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600
+       to-indigo-600 text-white font-bold text-sm">
         {initials(user?.name)}
       </div>
     );
@@ -88,9 +79,9 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-[9999] backdrop-blur-xl bg-white/80 border-b border-blue-100 shadow-sm">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 h-[70px] flex items-center justify-between min-w-[310px] relative">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 h-17.5 flex items-center justify-between min-w-77.5 relative">
 
-        
+
         <Link href="/" className="flex items-center gap-2 min-w-0">
           <div className="p-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
             <LayoutGrid size={20} />
@@ -106,12 +97,9 @@ const Navbar = () => {
             const Icon = item.icon;
             return (
               <li key={item.name}>
-                <Link
-                  href={item.path}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${isActive(
-                    item.path
-                  )}`}
-                >
+                <Link href={item.path}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200
+                   ${isActive(item.path)}`} >
                   <Icon size={16} />
                   {item.name}
                 </Link>
@@ -123,14 +111,14 @@ const Navbar = () => {
 
         <div className="flex items-center gap-2">
 
-          
+
           {user && (
             <div className="lg:hidden">
               <Avatar />
             </div>
           )}
 
-          
+
           <div className="hidden lg:flex items-center gap-2">
             {isPending ? (
               <p className="text-sm text-gray-500">Loading...</p>
@@ -138,16 +126,15 @@ const Navbar = () => {
               <>
                 <Link
                   href="/login"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500 text-blue-600 text-sm hover:bg-blue-50 transition"
-                >
+                  className="flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500 text-blue-600 text-sm
+                   hover:bg-blue-50 transition">
                   <LogIn size={15} />
                   Login
                 </Link>
 
                 <Link
                   href="/signup"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white text-sm hover:bg-blue-700 transition"
-                >
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white text-sm hover:bg-blue-700 transition" >
                   <UserPlus size={15} />
                   Sign Up
                 </Link>
@@ -157,8 +144,8 @@ const Navbar = () => {
                 <Avatar />
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-red-500 text-white text-sm hover:bg-red-600 transition"
-                >
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-red-500 text-white text-sm
+                   hover:bg-red-600 transition" >
                   <LogOut size={15} />
                   Logout
                 </button>
@@ -169,30 +156,24 @@ const Navbar = () => {
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 rounded-xl active:scale-95 bg-blue-50 hover:bg-blue-100 transition"
-          >
+            className="lg:hidden p-2 rounded-xl active:scale-95 bg-blue-50 hover:bg-blue-100 transition">
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
 
-          
+
           {menuOpen && (
             <div
               ref={menuRef}
-              className="absolute top-14 right-0 w-[250px] max-w-[90vw] bg-white border border-blue-100 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-4 space-y-3 z-[9999] animate-in fade-in zoom-in-95 duration-200"
-            >
-              
+              className="absolute top-14 right-0 w-62.5 max-w-[90vw] bg-white border border-blue-100 rounded-2xl
+               shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-4 space-y-3 z-[9999] animate-in fade-in zoom-in-95 duration-200">
+
               <div className="grid gap-2">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <Link
-                      key={item.name}
-                      href={item.path}
-                      onClick={() => setMenuOpen(false)}
+                    <Link key={item.name} href={item.path} onClick={() => setMenuOpen(false)}
                       className={`flex items-center gap-3 p-3 rounded-xl text-sm font-medium transition ${isActive(
-                        item.path
-                      )}`}
-                    >
+                        item.path)}`}>
                       <Icon size={18} />
                       {item.name}
                     </Link>
@@ -200,25 +181,23 @@ const Navbar = () => {
                 })}
               </div>
 
-              
+
 
               <div className="pt-3 border-t space-y-2">
                 {!user ? (
                   <>
                     <Link
-                      href="/login"
-                      onClick={() => setMenuOpen(false)}
-                      className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-blue-500 text-blue-600 hover:bg-blue-50 transition"
-                    >
+                      href="/login" onClick={() => setMenuOpen(false)}
+                      className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-blue-500
+                       text-blue-600 hover:bg-blue-50 transition">
                       <LogIn size={16} />
                       Login
                     </Link>
 
                     <Link
-                      href="/signup"
-                      onClick={() => setMenuOpen(false)}
-                      className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition"
-                    >
+                      href="/signup" onClick={() => setMenuOpen(false)}
+                      className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-blue-600 text-white
+                       hover:bg-blue-700 transition">
                       <UserPlus size={16} />
                       Sign Up
                     </Link>
@@ -226,8 +205,7 @@ const Navbar = () => {
                 ) : (
                   <button
                     onClick={handleLogout}
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-red-500 text-white hover:bg-red-600 transition"
-                  >
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-red-500 text-white hover:bg-red-600 transition" >
                     <LogOut size={16} />
                     Logout
                   </button>

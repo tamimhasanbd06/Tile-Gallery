@@ -21,19 +21,15 @@ const TileCarts = ({ tiles, index }) => {
       : "/placeholder.png";
 
   return (
-    <div className="group w-full bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:-translate-y-2">
+    <div className="group w-full bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all
+     duration-500 overflow-hidden border border-gray-100 hover:-translate-y-2">
       
       
 
 
 
       <div className="relative w-full h-52 bg-gray-100 overflow-hidden">
-        <Image
-          src={safeImage}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          priority={index < 3} 
+        <Image src={safeImage} alt={title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"  priority={index < 3} 
           className="object-cover group-hover:scale-110 transition-transform duration-500"/>
 
         <div className="absolute top-3 left-3 bg-black/60 text-white text-[10px] px-2 py-1 rounded-full">
@@ -65,7 +61,8 @@ const TileCarts = ({ tiles, index }) => {
    
 <Link href={`/allTiles/${id}`} className="w-full"> 
 
-  <button className="w-full mt-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2.5 rounded-2xl font-semibold shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
+  <button className="w-full mt-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2.5 rounded-2xl font-semibold 
+  shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
     See Details
   </button>
 </Link>

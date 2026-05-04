@@ -41,23 +41,7 @@ const TilesDetails = async ({ params, searchParams }) => {
   const backUrl = searchParams?.from === "home" ? "/" : "/allTiles";
 
   const {
-    id: _id,
-    image,
-    title,
-    brand,
-    description,
-    material,
-    dimensions,
-    rating,
-    inStock,
-    price,
-    currency,
-    category,
-    sku,
-    releaseDate,
-    reviews,
-    ...extraData
-  } = tile;
+    id: _id, image, title, brand, description, material, dimensions, rating, inStock, price, currency, category, sku, releaseDate, reviews, ...extraData} = tile;
 
   return (
     <div className="min-h-screen bg-white py-6 sm:py-10 px-4 sm:px-6">
@@ -66,25 +50,18 @@ const TilesDetails = async ({ params, searchParams }) => {
         {/* BACK BUTTON (DYNAMIC) */}
         <Link
           href={backUrl}
-          className="text-blue-600 font-bold mb-6 inline-block hover:underline"
-        >
+          className="text-blue-600 font-bold mb-6 inline-block hover:underline">
           ← Back
         </Link>
 
-        {/* MAIN CARD */}
+        
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 bg-gray-50 rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-sm border border-gray-100 p-4 sm:p-6 md:p-10">
 
           
 
           <div className="lg:w-1/2 w-full flex items-center justify-center bg-white rounded-2xl overflow-hidden p-4">
             <div className="relative w-full h-62.5 sm:h-87.5 md:h-112.5 lg:h-137.5">
-              <Image
-                src={image}
-                alt={title}
-                fill
-                className="object-contain"
-                priority
-              />
+              <Image  src={image} alt={title} fill className="object-contain" priority/>
             </div>
           </div>
 

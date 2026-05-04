@@ -46,10 +46,7 @@ const MyProfilePage = () => {
   const initials = (name) => {
     if (!name) return "U";
     const parts = name.trim().split(" ");
-    return parts.length === 1
-      ? parts[0][0].toUpperCase()
-      : `${parts[0][0]}${parts[1][0]}`.toUpperCase();
-  };
+    return parts.length === 1 ? parts[0][0].toUpperCase() : `${parts[0][0]}${parts[1][0]}`.toUpperCase(); };
 
 
   const handleInputChange = (e) => {
@@ -120,12 +117,12 @@ const MyProfilePage = () => {
             <div className="relative w-28 h-28">
               <Image
                 src={profile.image}
-                alt="avatar"
-                fill
-                className="rounded-full object-cover border-4 border-blue-200"
-              />
+                alt="avatar"  fill
+                className="rounded-full object-cover border-4 border-blue-200"/>
             </div>
+
           ) : (
+
             <div className="w-28 h-28 flex items-center justify-center rounded-full bg-blue-600 text-white text-3xl font-bold">
               {initials(profile.name)}
             </div>
@@ -151,8 +148,7 @@ const MyProfilePage = () => {
         
         <label
           htmlFor="my_modal_6"
-          className="w-full block bg-blue-600 text-white py-3 rounded-xl cursor-pointer hover:bg-blue-700"
-        >
+          className="w-full block bg-blue-600 text-white py-3 rounded-xl cursor-pointer hover:bg-blue-700" >
           Edit Profile
         </label>
       </div>
@@ -175,11 +171,8 @@ const MyProfilePage = () => {
               <div className="relative mt-1">
                 <FaUser className="absolute left-3 top-3 text-gray-400" />
                 <input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full border p-3 pl-10 rounded-xl focus:ring-2 focus:ring-blue-500"
-                />
+                  name="name" value={formData.name} onChange={handleInputChange}
+                  className="w-full border p-3 pl-10 rounded-xl focus:ring-2 focus:ring-blue-500"/>
               </div>
             </div>
 
@@ -189,10 +182,8 @@ const MyProfilePage = () => {
               <div className="relative mt-1">
                 <FaImage className="absolute left-3 top-3 text-gray-400" />
                 <input
-                  name="image"
-                  value={formData.image}
-                  onChange={handleInputChange}
-                  className="w-full border p-3 pl-10 rounded-xl focus:ring-2 focus:ring-blue-500"
+                  name="image" value={formData.image} onChange={handleInputChange}
+ className="w-full border p-3 pl-10 rounded-xl focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -200,17 +191,13 @@ const MyProfilePage = () => {
             
             <div className="flex gap-3 pt-3">
 
-              <label
-                htmlFor="my_modal_6"
-                className="w-full text-center border py-3 rounded-xl cursor-pointer"
-              >
+              <label htmlFor="my_modal_6"
+                className="w-full text-center border py-3 rounded-xl cursor-pointer" >
                 Cancel
               </label>
 
               <button
-                type="submit"
-                className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700"
-              >
+                type="submit" className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700" >
                 Save
               </button>
             </div>

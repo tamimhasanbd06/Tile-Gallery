@@ -56,23 +56,19 @@ const Banner = () => {
         {bannerSlides.map((slide, index) => (
           <SwiperSlide key={slide.id}>
             <div className="relative w-full h-screen">
-              
 
 
 
-              <Image
-                src={slide.image}
-                alt={slide.title}
-                fill
-                priority={index === 0}    
+
+              <Image src={slide.image} alt={slide.title} fill priority={index === 0}
                 loading={index === 0 ? "eager" : "lazy"}
-                className="object-cover object-center"/>
+                className="object-cover object-center" />
 
 
 
               <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] z-10"></div>
 
-              
+
               <div className="relative z-20 flex items-center h-full px-6 sm:px-8 md:px-14 lg:px-24">
                 <div className="w-full max-w-4xl text-center lg:text-left">
                   <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
@@ -107,7 +103,7 @@ const Banner = () => {
         </div>
       </div>
 
-      
+
 
       <style jsx>{`
         .animate-marquee {
@@ -125,18 +121,9 @@ const Banner = () => {
           }
         }
 
-        :global(.swiper-pagination-bullet) {
-          background: white;
-          opacity: 0.7;
-          width: 12px;
-          height: 12px;
-        }
+        :global(.swiper-pagination-bullet) {  background: white; opacity: 0.7; width: 12px; height: 12px; }
 
-        :global(.swiper-pagination-bullet-active) {
-          background: white;
-          opacity: 1;
-          transform: scale(1.2);
-        }
+        :global(.swiper-pagination-bullet-active) { background: white; opacity: 1;transform: scale(1.2);}
       `}</style>
     </section>
   );
