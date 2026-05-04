@@ -74,9 +74,10 @@ const TilesDetails = async ({ params, searchParams }) => {
         {/* MAIN CARD */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 bg-gray-50 rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-sm border border-gray-100 p-4 sm:p-6 md:p-10">
 
-          {/* IMAGE SECTION (FULL RESPONSIVE SAFE) */}
+          
+
           <div className="lg:w-1/2 w-full flex items-center justify-center bg-white rounded-2xl overflow-hidden p-4">
-            <div className="relative w-full h-62.5 sm:h-87.5 md:h-112.5 lg:h-[550px]">
+            <div className="relative w-full h-62.5 sm:h-87.5 md:h-112.5 lg:h-137.5">
               <Image
                 src={image}
                 alt={title}
@@ -87,7 +88,8 @@ const TilesDetails = async ({ params, searchParams }) => {
             </div>
           </div>
 
-          {/* CONTENT */}
+          
+
           <div className="lg:w-1/2 w-full flex flex-col justify-center">
 
             <p className="text-blue-600 font-bold uppercase mb-2 flex items-center gap-2 text-sm sm:text-base">
@@ -102,7 +104,7 @@ const TilesDetails = async ({ params, searchParams }) => {
               {description}
             </p>
 
-            {/* MAIN INFO */}
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8 mb-8">
 
               <div className="flex items-center gap-3">
@@ -141,7 +143,8 @@ const TilesDetails = async ({ params, searchParams }) => {
 
             </div>
 
-            {/* PRICE */}
+            
+
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <p className="text-2xl sm:text-3xl font-black text-blue-600">
                 {currency} {price}
@@ -155,7 +158,7 @@ const TilesDetails = async ({ params, searchParams }) => {
           </div>
         </div>
 
-        {/* EXTRA DATA */}
+        
         <div className="mt-10 sm:mt-12">
           <h2 className="text-xl sm:text-2xl font-bold mb-6">
             Additional Information

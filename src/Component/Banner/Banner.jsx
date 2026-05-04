@@ -72,7 +72,7 @@ const Banner = () => {
 
               <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] z-10"></div>
 
-              {/* Content */}
+              
               <div className="relative z-20 flex items-center h-full px-6 sm:px-8 md:px-14 lg:px-24">
                 <div className="w-full max-w-4xl text-center lg:text-left">
                   <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
@@ -95,7 +95,7 @@ const Banner = () => {
         ))}
       </Swiper>
 
-      {/* Marquee */}
+
       <div className="absolute bottom-0 left-0 w-full z-30 backdrop-blur-xl bg-white/10 border-t border-white/20 shadow-2xl">
         <div className="overflow-hidden py-4">
           <div className="animate-marquee whitespace-nowrap text-white text-sm sm:text-base md:text-lg font-medium tracking-wide">
@@ -107,7 +107,8 @@ const Banner = () => {
         </div>
       </div>
 
-      {/* Styles */}
+      
+
       <style jsx>{`
         .animate-marquee {
           display: inline-block;

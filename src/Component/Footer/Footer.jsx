@@ -34,13 +34,13 @@ const Footer = () => {
             </li>
 
             <li>
-              <Link href="#" className="text-gray-500 hover:text-blue-600 cursor-pointer transition">
+              <Link href="/allTiles" className="text-gray-500 hover:text-blue-600 cursor-pointer transition">
                 All Tiles
               </Link>
             </li>
 
             <li>
-              <Link href="#" className="text-gray-500 hover:text-blue-600 cursor-pointer transition">
+              <Link href="/myprofile" className="text-gray-500 hover:text-blue-600 cursor-pointer transition">
                 My Profile
               </Link>
             </li>

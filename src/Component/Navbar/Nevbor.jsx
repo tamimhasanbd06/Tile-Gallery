@@ -90,7 +90,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-[9999] backdrop-blur-xl bg-white/80 border-b border-blue-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 h-[70px] flex items-center justify-between min-w-[310px] relative">
 
-        {/* LOGO */}
+        
         <Link href="/" className="flex items-center gap-2 min-w-0">
           <div className="p-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
             <LayoutGrid size={20} />
@@ -100,7 +100,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* DESKTOP NAV */}
+
         <ul className="hidden lg:flex items-center gap-2">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -120,17 +120,17 @@ const Navbar = () => {
           })}
         </ul>
 
-        {/* RIGHT SECTION */}
+
         <div className="flex items-center gap-2">
 
-          {/* MOBILE/TABLET AVATAR */}
+          
           {user && (
             <div className="lg:hidden">
               <Avatar />
             </div>
           )}
 
-          {/* DESKTOP AUTH */}
+          
           <div className="hidden lg:flex items-center gap-2">
             {isPending ? (
               <p className="text-sm text-gray-500">Loading...</p>
@@ -166,7 +166,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* HAMBURGER */}
+
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="lg:hidden p-2 rounded-xl active:scale-95 bg-blue-50 hover:bg-blue-100 transition"
@@ -174,13 +174,13 @@ const Navbar = () => {
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
 
-          {/* FLOATING DROPDOWN */}
+          
           {menuOpen && (
             <div
               ref={menuRef}
               className="absolute top-14 right-0 w-[250px] max-w-[90vw] bg-white border border-blue-100 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-4 space-y-3 z-[9999] animate-in fade-in zoom-in-95 duration-200"
             >
-              {/* NAVIGATION */}
+              
               <div className="grid gap-2">
                 {navItems.map((item) => {
                   const Icon = item.icon;
@@ -200,7 +200,8 @@ const Navbar = () => {
                 })}
               </div>
 
-              {/* AUTH */}
+              
+
               <div className="pt-3 border-t space-y-2">
                 {!user ? (
                   <>

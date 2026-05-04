@@ -14,14 +14,14 @@ import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
-// React Toastify
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function SignUpPage() {
   const router = useRouter();
 
-  // ================= SIGN UP FORM SUBMIT =================
+  
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,7 +30,7 @@ export default function SignUpPage() {
     const password = e.target.password.value.trim();
     const imageUrl = e.target.imageUrl.value.trim();
 
-    // ================= REQUIRED FIELD VALIDATION =================
+    
     if (!name) {
       toast.error("Name is required!");
       return;
@@ -75,7 +75,7 @@ export default function SignUpPage() {
     }
   };
 
-  // ================= GOOGLE SIGN IN =================
+  
   const handleGoogleSignIn = async () => {
     try {
       await authClient.signIn.social({
@@ -90,7 +90,7 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-2 sm:px-4 md:px-6 py-4">
-      {/* ================= TOAST CONTAINER ================= */}
+      
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -115,7 +115,7 @@ export default function SignUpPage() {
           Create your account to continue
         </p>
 
-        {/* ================= GOOGLE BUTTON ================= */}
+        
         <Button
           onClick={handleGoogleSignIn}
           type="button"
@@ -125,7 +125,7 @@ export default function SignUpPage() {
           Sign Up with Google
         </Button>
 
-        {/* Divider */}
+        
         <div className="flex items-center gap-2 sm:gap-3 my-4 sm:my-6">
           <div className="flex-1 h-px bg-gray-300"></div>
           <span className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider">
@@ -134,7 +134,7 @@ export default function SignUpPage() {
           <div className="flex-1 h-px bg-gray-300"></div>
         </div>
 
-        {/* ================= SIGN UP FORM ================= */}
+        
         <Form className="flex flex-col gap-4 sm:gap-5" onSubmit={onSubmit}>
           {/* Name */}
           <TextField name="name" isRequired>
@@ -151,7 +151,7 @@ export default function SignUpPage() {
             </div>
           </TextField>
 
-          {/* Email */}
+          
           <TextField name="email" isRequired>
             <Label className="text-[10px] sm:text-xs uppercase tracking-widest text-gray-600">
               Email
@@ -167,7 +167,7 @@ export default function SignUpPage() {
             </div>
           </TextField>
 
-          {/* Password */}
+          
           <TextField name="password" isRequired>
             <Label className="text-[10px] sm:text-xs uppercase tracking-widest text-gray-600">
               Password
@@ -183,7 +183,7 @@ export default function SignUpPage() {
             </div>
           </TextField>
 
-          {/* Image URL */}
+
           <TextField name="imageUrl" isRequired>
             <Label className="text-[10px] sm:text-xs uppercase tracking-widest text-gray-600">
               Image URL
@@ -199,7 +199,7 @@ export default function SignUpPage() {
             </div>
           </TextField>
 
-          {/* Submit Button */}
+
           <Button
             type="submit"
             className="w-full h-10 xs:h-11 sm:h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 mt-2 transition-all duration-300 text-sm sm:text-base"
@@ -209,7 +209,7 @@ export default function SignUpPage() {
           </Button>
         </Form>
 
-        {/* Login Redirect */}
+        
         <p className="text-center text-gray-500 text-[11px] sm:text-xs mt-4 sm:mt-6">
           Already have an account?{" "}
           <Link

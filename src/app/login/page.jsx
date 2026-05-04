@@ -14,7 +14,9 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // ================= EMAIL LOGIN =================
+  
+
+
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -44,7 +46,9 @@ export default function LoginPage() {
     }
   };
 
-  // ================= GOOGLE LOGIN =================
+  
+
+
   const handleGoogle = async () => {
     try {
       await authClient.signIn.social({
@@ -62,7 +66,8 @@ export default function LoginPage() {
         className="w-full max-w-md p-6 sm:p-8 rounded-2xl shadow-2xl border border-gray-200"
         style={{ backgroundColor: "#F4F0F8" }}
       >
-        {/* TITLE */}
+       
+
         <h1 className="text-3xl font-extrabold text-center text-gray-900">
           Login
         </h1>
@@ -71,7 +76,8 @@ export default function LoginPage() {
           Welcome back! Please login to continue
         </p>
 
-        {/* GOOGLE LOGIN */}
+        
+
         <Button
           onClick={handleGoogle}
           type="button"
@@ -81,24 +87,25 @@ export default function LoginPage() {
           Continue with Google
         </Button>
 
-        {/* ERROR MESSAGE */}
+        
+
         {errorMsg && (
           <p className="text-red-500 text-sm text-center mt-3">
             {errorMsg}
           </p>
         )}
 
-        {/* DIVIDER */}
+        
         <div className="flex items-center gap-3 my-6">
           <div className="flex-1 h-px bg-gray-300"></div>
           <span className="text-xs text-gray-500 uppercase">OR</span>
           <div className="flex-1 h-px bg-gray-300"></div>
         </div>
 
-        {/* LOGIN FORM */}
+        
         <Form className="flex flex-col gap-5" onSubmit={onSubmit}>
           
-          {/* EMAIL */}
+          
           <TextField name="email" isRequired>
             <Label className="text-xs uppercase tracking-widest text-gray-600">
               Email
@@ -114,7 +121,7 @@ export default function LoginPage() {
             </div>
           </TextField>
 
-          {/* PASSWORD */}
+
           <TextField name="password" isRequired>
             <Label className="text-xs uppercase tracking-widest text-gray-600">
               Password
@@ -130,7 +137,7 @@ export default function LoginPage() {
             </div>
           </TextField>
 
-          {/* BUTTON */}
+
           <Button
             type="submit"
             disabled={loading}
@@ -141,9 +148,9 @@ export default function LoginPage() {
           </Button>
         </Form>
 
-        {/* SIGNUP LINK */}
+        
         <p className="text-center text-sm text-gray-500 mt-5">
-          Don’t have an account?{" "}
+          Don t have an account?{" "}
           <Link href="/signup" className="text-blue-600 font-medium">
             Sign up
           </Link>

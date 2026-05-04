@@ -16,7 +16,8 @@ const SearchTiles = ({ allTiles }) => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-12">
 
-      {/* HEADING */}
+      
+      
       <div className="text-center mb-10">
         <h2 className="text-3xl md:text-5xl font-extrabold text-blue-700">
           All Tiles
@@ -26,7 +27,8 @@ const SearchTiles = ({ allTiles }) => {
         </p>
       </div>
 
-      {/* SEARCH BAR */}
+      
+
       <div className="mb-10 flex justify-center">
         <div className="w-full max-w-md relative">
           <input
@@ -50,7 +52,8 @@ const SearchTiles = ({ allTiles }) => {
         </div>
       )}
 
-      {/* ✅ RESPONSIVE GRID (MAIN FIX HERE) */}
+      
+      
       <div className="
         grid 
         grid-cols-1 

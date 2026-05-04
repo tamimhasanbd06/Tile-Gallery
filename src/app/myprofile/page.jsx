@@ -9,20 +9,21 @@ const MyProfilePage = () => {
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
 
-  /* ---------------- PROFILE STATE ---------------- */
+
+
   const [profile, setProfile] = useState({
     name: "",
     email: "",
     image: "",
   });
 
-  /* ---------------- FORM STATE (ONLY NAME + IMAGE) ---------------- */
+
   const [formData, setFormData] = useState({
     name: "",
     image: "",
   });
 
-  /* ---------------- LOAD USER DATA ---------------- */
+
   useEffect(() => {
     if (user) {
       const data = {
@@ -41,7 +42,7 @@ const MyProfilePage = () => {
     }
   }, [user]);
 
-  /* ---------------- INITIALS ---------------- */
+
   const initials = (name) => {
     if (!name) return "U";
     const parts = name.trim().split(" ");
@@ -50,7 +51,7 @@ const MyProfilePage = () => {
       : `${parts[0][0]}${parts[1][0]}`.toUpperCase();
   };
 
-  /* ---------------- INPUT CHANGE ---------------- */
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -60,12 +61,12 @@ const MyProfilePage = () => {
     }));
   };
 
-  /* ---------------- SAVE + UPDATE (MONGODB via authClient) ---------------- */
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // 👇 backend update call (authClient should handle DB/MongoDB update)
+      
       await authClient.updateUser({
         name: formData.name,
         image: formData.image,
@@ -85,7 +86,7 @@ const MyProfilePage = () => {
     }
   };
 
-  /* ---------------- LOADING ---------------- */
+  
   if (isPending) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -94,7 +95,7 @@ const MyProfilePage = () => {
     );
   }
 
-  /* ---------------- NO USER ---------------- */
+  
   if (!user) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -106,7 +107,7 @@ const MyProfilePage = () => {
     );
   }
 
-  /* ---------------- UI ---------------- */
+  
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-100 px-5">
 
@@ -131,12 +132,12 @@ const MyProfilePage = () => {
           )}
         </div>
 
-        {/* NAME */}
+        
         <h1 className="text-2xl font-bold text-gray-800">
           {profile.name || "Unknown"}
         </h1>
 
-        {/* EMAIL (READ ONLY) */}
+        
         <p className="text-gray-500 break-all">
           {profile.email}
         </p>
@@ -147,7 +148,7 @@ const MyProfilePage = () => {
           Welcome to your profile dashboard
         </p>
 
-        {/* OPEN MODAL BUTTON */}
+        
         <label
           htmlFor="my_modal_6"
           className="w-full block bg-blue-600 text-white py-3 rounded-xl cursor-pointer hover:bg-blue-700"
@@ -156,7 +157,7 @@ const MyProfilePage = () => {
         </label>
       </div>
 
-      {/* MODAL */}
+      
       <input type="checkbox" id="my_modal_6" className="modal-toggle" />
 
       <div className="modal z-[9999]" role="dialog">
@@ -168,7 +169,7 @@ const MyProfilePage = () => {
 
           <form onSubmit={handleSubmit} className="space-y-5 mt-6">
 
-            {/* NAME */}
+            
             <div>
               <label className="text-sm">Name</label>
               <div className="relative mt-1">
@@ -182,7 +183,7 @@ const MyProfilePage = () => {
               </div>
             </div>
 
-            {/* IMAGE */}
+            
             <div>
               <label className="text-sm">Image URL</label>
               <div className="relative mt-1">
@@ -196,7 +197,7 @@ const MyProfilePage = () => {
               </div>
             </div>
 
-            {/* BUTTONS */}
+            
             <div className="flex gap-3 pt-3">
 
               <label
