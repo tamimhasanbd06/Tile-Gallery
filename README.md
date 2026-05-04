@@ -168,34 +168,3 @@ BETTER_AUTH_URL=
 MONGODB_URI=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
-📌 Purpose:
-BETTER_AUTH_SECRET: Authentication security secret
-BETTER_AUTH_URL: Base authentication URL
-MONGODB_URI: MongoDB database connection string
-GOOGLE_CLIENT_ID: Google login integration
-GOOGLE_CLIENT_SECRET: Google authentication secret
-🖼️ Website Page Screenshots
-🏠 Home Page
-
-🖼️ All Tiles Page
-
-👤 My Profile Page
-
-✏️ Edit Profile Page
-
-🔍 Tile Details Page
-
-🔐 Login Page
-
-📝 Register / Sign Up Page
-
-🚦 Route Summary
-🌍 Public Routes:
-/
-/all-tiles
-/login
-/register
-🔒 Private Routes:
-/tile/[id]
-/my-profile
-/edit-profile
