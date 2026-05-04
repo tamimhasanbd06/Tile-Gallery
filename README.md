@@ -20,60 +20,85 @@ The main goal of **Tile Gallery** is to make tile shopping easier and more acces
 
 ### 🔐 Authentication System
 
-* User Registration with:
-
-  * Name
-  * Email
-  * Photo URL
-  * Password
-* User Login with:
-
-  * Email
-  * Password
-* Google Social Login Integration
-* Secure authentication using BetterAuth
-* Protected private routes
+- User Registration with:
+  - Name
+  - Email
+  - Photo URL
+  - Password
+- User Login with:
+  - Email
+  - Password
+- Google Social Login Integration
+- Secure authentication using BetterAuth
+- Protected private routes
+- Secure session management
+- Persistent user login state
 
 ### 🏠 Home Page
 
-* Attractive Hero Banner
-* Marquee/Scrolling promotional text
-* Featured Tiles Section
-* Responsive modern UI
+- Attractive Hero Banner
+- Marquee/Scrolling promotional text
+- Featured Tiles Section
+- Popular categories showcase
+- Modern responsive layout
+- Smooth animations for better UX
 
 ### 🖼️ All Tiles Page
 
-* Search functionality for tiles by title
-* Large collection of tiles
-* Tile cards with thumbnail previews
-* Direct navigation to tile details
+- Search functionality for tiles by title
+- Large collection of tiles
+- Responsive tile cards
+- Tile thumbnail previews
+- Category-based browsing
+- Quick navigation to tile details
 
 ### 🔍 Tile Details Page
 
-* High-resolution tile preview
-* Full tile information:
-
-  * Title
-  * Description
-  * Category
-  * Price
-  * Dimensions
-  * Material
-  * Stock availability
-  * Tags
+- High-resolution tile preview
+- Full tile information:
+  - Title
+  - Description
+  - Category
+  - Price
+  - Dimensions
+  - Material
+  - Stock availability
+  - Tags
+- User-friendly design
+- Dynamic route protection
 
 ### 👤 My Profile Page
 
-* User profile information display
-* Profile image
-* Name update feature
-* Image URL update feature
+- User profile information display
+- Profile image
+- User name
+- Email information
+- Easy profile management
+- Personalized dashboard feel
+
+### ✏️ Edit Profile Page
+
+- Update user name
+- Update profile image URL
+- Save profile changes securely
+- Real-time user data update
+- Improved user customization
 
 ### 📱 Fully Responsive Design
 
-* Mobile
-* Tablet
-* Desktop
+- Mobile optimized
+- Tablet optimized
+- Desktop optimized
+- Cross-browser compatibility
+
+### ⚡ Additional Functionalities
+
+- Toast notifications
+- Loading spinners
+- Error handling
+- Custom 404 page
+- Protected routes
+- Smooth page transitions
 
 ---
 
@@ -81,55 +106,55 @@ The main goal of **Tile Gallery** is to make tile shopping easier and more acces
 
 ### 🚀 Core Framework
 
-* Next.js (App Router)
-* React
-* React DOM
+- Next.js (App Router)
+- React
+- React DOM
 
 ### 🎨 UI & Styling
 
-* Tailwind CSS
-* DaisyUI
-* HeroUI
-* Framer Motion
-* SwiperJS
-* Lucide React Icons
-* React Icons
+- Tailwind CSS
+- DaisyUI
+- HeroUI
+- Framer Motion
+- SwiperJS
+- Lucide React Icons
+- React Icons
 
 ### 🔒 Authentication & Database
 
-* BetterAuth
-* BetterAuth MongoDB Adapter
-* MongoDB
+- BetterAuth
+- BetterAuth MongoDB Adapter
+- MongoDB
 
 ### 🔔 Notifications
 
-* React Toastify
+- React Toastify
 
 ### 🧹 Development Tools
 
-* ESLint
-* PostCSS
+- ESLint
+- PostCSS
 
 ---
 
 ## 📦 NPM Packages & Their Uses
 
-| Package                    | Purpose                    |
-| -------------------------- | -------------------------- |
-| next                       | Full-stack React framework |
-| react                      | Frontend UI library        |
-| react-dom                  | React rendering            |
-| tailwindcss                | Utility-first CSS          |
-| daisyui                    | Tailwind component library |
-| @heroui/react              | Beautiful UI components    |
-| better-auth                | Authentication system      |
-| @better-auth/mongo-adapter | MongoDB integration        |
-| mongodb                    | Database                   |
-| framer-motion              | Animations                 |
-| swiper                     | Sliders/carousels          |
-| react-icons                | Icons                      |
-| lucide-react               | Modern icon set            |
-| react-toastify             | Toast notifications        |
+| Package | Purpose |
+|--------|---------|
+| next | Full-stack React framework |
+| react | Frontend UI library |
+| react-dom | React rendering |
+| tailwindcss | Utility-first CSS |
+| daisyui | Tailwind component library |
+| @heroui/react | Beautiful UI components |
+| better-auth | Authentication system |
+| @better-auth/mongo-adapter | MongoDB integration |
+| mongodb | Database |
+| framer-motion | Animations |
+| swiper | Sliders/carousels |
+| react-icons | Icons |
+| lucide-react | Modern icon set |
+| react-toastify | Toast notifications |
 
 ---
 
@@ -143,89 +168,34 @@ BETTER_AUTH_URL=
 MONGODB_URI=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
-```
+📌 Purpose:
+BETTER_AUTH_SECRET: Authentication security secret
+BETTER_AUTH_URL: Base authentication URL
+MONGODB_URI: MongoDB database connection string
+GOOGLE_CLIENT_ID: Google login integration
+GOOGLE_CLIENT_SECRET: Google authentication secret
+🖼️ Website Page Screenshots
+🏠 Home Page
 
-### 📌 Purpose:
+🖼️ All Tiles Page
 
-* **BETTER_AUTH_SECRET:** Authentication security secret
-* **BETTER_AUTH_URL:** Base authentication URL
-* **MONGODB_URI:** MongoDB database connection string
-* **GOOGLE_CLIENT_ID:** Google login integration
-* **GOOGLE_CLIENT_SECRET:** Google authentication secret
+👤 My Profile Page
 
----
+✏️ Edit Profile Page
 
-## 🖼️ Website Page Screenshots
+🔍 Tile Details Page
 
-### 🏠 Home Page
+🔐 Login Page
 
-![Home Page Screenshot](YOUR_HOME_PAGE_IMAGE_LINK_HERE)
+📝 Register / Sign Up Page
 
-### 🖼️ All Tiles Page
-
-![All Tiles Page Screenshot](YOUR_ALL_TILES_PAGE_IMAGE_LINK_HERE)
-
-### 👤 My Profile Page
-
-![My Profile Page Screenshot](YOUR_PROFILE_PAGE_IMAGE_LINK_HERE)
-
-### 🔐 Login Page
-
-![Login Page Screenshot](YOUR_LOGIN_PAGE_IMAGE_LINK_HERE)
-
-### 📝 Register Page
-
-![Register Page Screenshot](YOUR_REGISTER_PAGE_IMAGE_LINK_HERE)
-
-### 🔍 Tile Details Page
-
-![Tile Details Page Screenshot](YOUR_TILE_DETAILS_PAGE_IMAGE_LINK_HERE)
-
----
-
-## 🚦 Route Summary
-
-### 🌍 Public Routes:
-
-* `/`
-* `/all-tiles`
-* `/login`
-* `/register`
-
-### 🔒 Private Routes:
-
-* `/tile/[id]`
-* `/my-profile`
-
----
-
-## 📂 Deployment
-
-* Hosted on **Vercel**
-* SPA route reload protection configured
-* Secure environment variable management
-
----
-
-## 📌 Additional Requirements Completed
-
-* Minimum 10 meaningful GitHub commits
-* Unique UI design
-* Responsive design
-* Secure authentication
-* Custom footer
-* Search functionality
-* Profile management
-* Error handling
-* Loading states
-* Not-found page
-
----
-
-## 👨‍💻 Developer Notes
-
-This project was built as part of Assignment Category **A8 - Apple** following all required specifications and challenge requirements.
-
----
-
-# ⭐ Thank You For Visiting Tile Gallery!
+🚦 Route Summary
+🌍 Public Routes:
+/
+/all-tiles
+/login
+/register
+🔒 Private Routes:
+/tile/[id]
+/my-profile
+/edit-profile
